@@ -2,9 +2,10 @@ module Blog
   class PostFile
     attr_reader :full_content
 
-    TITLE       = 1
-    DESCRIPTION = 2
-    CONTENT = 3..-1
+    PUBLICATION_TIME = 0
+    TITLE            = 1
+    DESCRIPTION      = 2
+    CONTENT          = 3..-1
 
     def initialize(file)
       @full_content = file.read
@@ -20,6 +21,10 @@ module Blog
 
     def content
       lines[CONTENT].join("\n")
+    end
+
+    def publication_time
+      DateTime.parse(lines[PUBLICATION_TIME])
     end
 
     def lines

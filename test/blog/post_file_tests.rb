@@ -45,7 +45,10 @@ module Blog
                                     '<p>This is part of the content</p>']
   end
 
-  xtest '#publication_time - takes the first line with text as the publication time'
+  test '#publication_time - parses the first line with text as the publication time' do
+    the_publication_time = DateTime.parse('2011-05-08 20:00')
+    assert_equal @post_file.publication_time, the_publication_time
+  end
 
   test '#title - takes the second line with text as the title' do
     assert_equal @post_file.title, 'This is the post title'
