@@ -7,6 +7,10 @@ def assert_equal(a, b)
   raise ">#{a}< should be equal to >#{b}<" if a != b
 end
 
+def assert_not_equal(a, b)
+  raise ">#{a}< should not be equal >#{b}<" if a == b
+end
+
 def assert_true(expression)
   raise "it should be true" unless expression
 end
@@ -35,6 +39,14 @@ if ARGV[0] == "testit"
 
   test 'assert equal works with different elements' do
     assert_equal 'string', 'not string'
+  end
+
+  test 'assert not equal works with not equal elements' do
+    assert_not_equal 2, 4
+  end
+
+  test 'assert not equal works with equal elements' do
+    assert_not_equal :symbol, :symbol
   end
 
   test 'assert true works with expressions that evaluate to true' do
