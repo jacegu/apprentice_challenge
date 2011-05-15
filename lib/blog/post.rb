@@ -2,6 +2,8 @@ require 'date'
 
 module Blog
   class Post
+    include Comparable
+
     attr_reader :title, :description, :publication_time, :content
 
     def initialize(title, description, publication_time, content)
