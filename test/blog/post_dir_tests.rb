@@ -17,7 +17,8 @@ end
 module Blog
   entries = ['regular_file.txt',
              '.hidden_file',
-             'post-file.post.html']
+             'post-file.post.html',
+             'not-a-a-post-file.post.html.swp']
 
   the_directory = DirDouble.new(entries, '/')
   @dir = PostDir.new(the_directory)

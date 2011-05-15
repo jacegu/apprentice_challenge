@@ -2,7 +2,7 @@ module Blog
   class PostDir
     attr_reader :entries, :path
 
-    POST_FILE_NAME_PATTERN = /.*\.post\.html/
+    POST_FILE_NAME_PATTERN = /.*\.post\.html$/
 
     def initialize(dir)
       @path = dir.path
