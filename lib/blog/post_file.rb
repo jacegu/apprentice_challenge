@@ -1,9 +1,9 @@
 module Blog
   class PostFile
-    attr_reader :path
+    attr_reader :full_content
 
-    def initialize(path)
-      @path = path
+    def initialize(file)
+      @full_content = file.read
     end
   end
 end
