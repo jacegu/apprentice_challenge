@@ -14,7 +14,7 @@ class DirDouble
   end
 end
 
-module Blog
+module MyBlog
   entries = ['regular_file.txt',
              '.hidden_file',
              'post-file.post.html',

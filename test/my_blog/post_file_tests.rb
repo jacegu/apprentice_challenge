@@ -19,7 +19,7 @@ def sample_post_file_content
   """
 end
 
-module Blog
+module MyBlog
   file = FileDouble.new(sample_post_file_content)
   @post_file = PostFile.new(file)
 

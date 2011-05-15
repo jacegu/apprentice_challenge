@@ -1,4 +1,4 @@
-module Blog
+module MyBlog
   class PostDir
     attr_reader :entries, :path
 

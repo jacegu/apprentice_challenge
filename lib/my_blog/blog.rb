@@ -1,4 +1,4 @@
-module Blog
+module MyBlog
   class Blog
     attr_reader :name, :description, :posts
 

@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-module Blog
+module MyBlog
   test 'a post has a title' do
     the_title = 'the post title'
     post = a_post_entitled(the_title)

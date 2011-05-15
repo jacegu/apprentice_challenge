@@ -1,6 +1,6 @@
 require 'date'
 
-module Blog
+module MyBlog
   class Post
     include Comparable
 

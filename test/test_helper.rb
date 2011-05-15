@@ -1,20 +1,20 @@
 $: << File.join(File.expand_path(File.dirname(__FILE__)), '..', 'lib')
 
 require 'testing'
-require 'blog'
+require 'my_blog'
 
 def a_post_entitled(the_title)
-  Blog::Post.new(the_title, '', '', DateTime.new)
+  MyBlog::Post.new(the_title, '', '', DateTime.new)
 end
 
 def a_post_with_description(the_description)
-  Blog::Post.new('', the_description, '', DateTime.new)
+  MyBlog::Post.new('', the_description, '', DateTime.new)
 end
 
 def a_post_with_publication_time(the_time)
-  Blog::Post.new('', '', '', the_time)
+  MyBlog::Post.new('', '', '', the_time)
 end
 
 def a_post_with_content(the_content)
-  Blog::Post.new('', '', the_content, DateTime.new)
+  MyBlog::Post.new('', '', the_content, DateTime.new)
 end

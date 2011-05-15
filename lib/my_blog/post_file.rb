@@ -1,4 +1,4 @@
-module Blog
+module MyBlog
   class PostFile < Post
     attr_reader :full_content
 
