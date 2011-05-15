@@ -6,6 +6,10 @@ def assert_equal(a, b)
   raise ">#{a}< should be equal to >#{b}<" if a != b
 end
 
+def assert_true(expression)
+  raise "it should be true" unless expression
+end
+
 def print_in_color(color, message)
   STDERR.puts "#{color}#{message}#{NO_COLOR}"
 end
@@ -26,6 +30,14 @@ if ARGV[0] == "testit"
 
   test 'assert equal works with different elements' do
     assert_equal 'string', 'not string'
+  end
+
+  test 'assert true works with expressions that evaluate to true' do
+    assert_true 'a' == 'a'
+  end
+
+  test 'assert true works with expressions that evaluate to false' do
+    assert_true false
   end
 
   test 'test works when there are errors in the code under test' do
