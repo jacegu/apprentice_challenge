@@ -23,6 +23,13 @@ module Blog
       DateTime.now >= publication_time
     end
 
+    def ==(other)
+      title == other.title and
+        description == other.description and
+        content == other.content and
+        publication_time == other.publication_time
+    end
+
     def <=>(other)
       publication_time <=> other.publication_time
     end

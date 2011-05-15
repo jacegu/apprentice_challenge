@@ -27,6 +27,40 @@ module Blog
     assert_equal post.content, the_content
   end
 
+  test "posts are equal if they've the same title, description, publication time and content" do
+    now = DateTime.now
+    a_post     = Post.new('t', 'd', 'c', now)
+    other_post = Post.new('t', 'd', 'c', now)
+    assert_equal a_post, other_post
+  end
+
+  test 'posts are different if they have different title' do
+    now = DateTime.now
+    a_post     = Post.new('x', 'd', 'c', now)
+    other_post = Post.new('t', 'd', 'c', now)
+    assert_not_equal a_post, other_post
+  end
+
+  test 'posts are different if they have different description' do
+    now = DateTime.now
+    a_post     = Post.new('t', 'x', 'c', now)
+    other_post = Post.new('t', 'd', 'c', now)
+    assert_not_equal a_post, other_post
+  end
+
+  test 'posts are different if they have different content' do
+    now = DateTime.now
+    a_post     = Post.new('t', 'd', 'x', now)
+    other_post = Post.new('t', 'd', 'c', now)
+    assert_not_equal a_post, other_post
+  end
+
+  test 'posts are different if they have different publication time' do
+    a_post     = Post.new('t', 'd', 'c', DateTime.now)
+    other_post = Post.new('t', 'd', 'c', DateTime.now)
+    assert_not_equal a_post, other_post
+  end
+
   test 'posts are compared based in their publication time' do
     a_post     = a_post_with_publication_time(DateTime.parse('2011-01-01 00:00:00'))
     other_post = a_post_with_publication_time(DateTime.parse('2011-02-01 00:00:00'))
