@@ -10,5 +10,9 @@ module Blog
       @publication_time = publication_time
       @content = content
     end
+
+    def <=>(other)
+      @publication_time <=> other.publication_time
+    end
   end
 end
