@@ -4,7 +4,7 @@ def run_tests_in(dir)
     run_tests_in(entry) if File.directory?(entry)
     if entry =~ /.+_tests\.rb/
       STDERR.puts "\n#{entry}"
-      File.open(entry, 'r'){ |file| eval file.read }
+      load entry
     end
   end
 end
