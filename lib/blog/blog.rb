@@ -1,9 +1,9 @@
 module Blog
   class Blog
-    attr_reader :config
+    attr_reader :name
 
-    def initialize(configuration)
-      @config = configuration
+    def initialize(name)
+      @name = name
     end
   end
 end
