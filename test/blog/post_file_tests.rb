@@ -20,7 +20,7 @@ def sample_post_file_content
 end
 
 module Blog
-  file = FileDouble.new(sample_post_file_content)
+  file = FileDouble.new(sample_post_file_content, false)
   @post_file = PostFile.new(file)
 
   test 'a post file reads the full content of the File its created from' do
