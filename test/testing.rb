@@ -3,7 +3,7 @@ RED      = "\e[0;31m"
 NO_COLOR = "\e[0m"
 
 def assert_equal(a, b)
-  raise "[#{a}] should be equal to [#{b}]" if a != b
+  raise ">#{a}< should be equal to >#{b}<" if a != b
 end
 
 def print_in_color(color, message)
