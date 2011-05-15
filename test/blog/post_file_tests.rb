@@ -53,7 +53,10 @@ module Blog
     assert_equal @post_file.title, 'This is the post title'
   end
 
-  xtest '#description takes the third line with text as the description'
+  test '#description takes the third line with text as the description' do
+    assert_equal @post_file.description, 'This should be the post description'
+  end
 
   xtest '#content takes from 4th line to the end of the file as the content'
+
 end

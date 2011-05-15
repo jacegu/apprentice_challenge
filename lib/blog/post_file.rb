@@ -1,16 +1,21 @@
 module Blog
   class PostFile
-
-    TITLE_LINE = 1
-
     attr_reader :full_content
+
+    TITLE       = 1
+    DESCRIPTION = 2
+
 
     def initialize(file)
       @full_content = file.read
     end
 
     def title
-      lines[TITLE_LINE]
+      lines[TITLE]
+    end
+
+    def description
+      lines[DESCRIPTION]
     end
 
     def lines
