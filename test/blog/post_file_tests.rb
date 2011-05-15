@@ -1,16 +1,7 @@
 $: << File.join(File.expand_path(File.dirname(__FILE__)), '..')
 
 require 'test_helper'
-
-class FileDouble
-  def initialize(content)
-    @content = content
-  end
-
-  def read
-    @content
-  end
-end
+require 'file_double'
 
 def sample_post_file_content
   """
