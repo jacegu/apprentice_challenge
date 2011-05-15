@@ -14,7 +14,7 @@ module Blog
     end
 
     def uri
-      @title
+      @title.gsub(/\s/, '-')
     end
 
     def published?

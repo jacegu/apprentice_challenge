@@ -44,4 +44,9 @@ module Blog
     post = a_post_entitled(post_title)
     assert_equal post.uri, post_title
   end
+
+  test 'spaces are replaces with - in the title uri' do
+    post = a_post_entitled('title with several words')
+    assert_equal post.uri, 'title-with-several-words'
+  end
 end
