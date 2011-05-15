@@ -25,7 +25,7 @@ def sample_post_file_content
   <h2>The content</h2>
       
   This is part of the content of the post
-  <p>And this is also part of the content of the post</p>
+  <p>And this is also part of it</p>
   """
 end
 
@@ -36,6 +36,15 @@ module Blog
 
   test 'a post file reads the full content of the File its created from' do
     assert_equal @post_file.full_content, sample_post_file_content
+  end
+
+  test '#lines returns the non empty lines of the file content' do
+    assert_equal @post_file.lines, ['2011-05-08 20:00',
+                                    'This is the post title',
+                                    'This should be the post description',
+                                    '<h2>The content</h2>',
+                                    'This is part of the content of the post',
+                                    '<p>And this is also part of it</p>']
   end
 
   xtest '#publication_time takes the first line with text as the publication time'
