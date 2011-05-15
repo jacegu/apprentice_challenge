@@ -14,24 +14,24 @@ end
 
 def sample_post_file_content
   """
+                  
   2011-05-08 20:00
- 
-  
+                  
   This is the post title
-   
-    
+                  
   This should be the post description
-     
+                  
   <h2>The content</h2>
-      
+                  
   <p>This is part of the content</p>
+                  
   """
 end
 
 
 module Blog
-  the_file = FileDouble.new(sample_post_file_content)
-  @post_file = PostFile.new(the_file)
+  file = FileDouble.new(sample_post_file_content)
+  @post_file = PostFile.new(file)
 
   test 'a post file reads the full content of the File its created from' do
     assert_equal @post_file.full_content, sample_post_file_content

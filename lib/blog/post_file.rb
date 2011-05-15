@@ -1,5 +1,5 @@
 module Blog
-  class PostFile
+  class PostFile < Post
     attr_reader :full_content
 
     PUBLICATION_TIME = 0

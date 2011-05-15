@@ -14,17 +14,17 @@ module Blog
     end
 
     def uri
-      chunks = @title.split
+      chunks = title.split
       chunks.each{ |c| c.gsub!(/\W/, '') }
       chunks.join('-')
     end
 
     def published?
-      DateTime.now >= @publication_time
+      DateTime.now >= publication_time
     end
 
     def <=>(other)
-      @publication_time <=> other.publication_time
+      publication_time <=> other.publication_time
     end
   end
 end
