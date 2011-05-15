@@ -7,5 +7,9 @@ module Blog
       @description = description
       @posts = posts.sort
     end
+
+    def published_posts
+      @posts.select{ |p| p.published? }
+    end
   end
 end

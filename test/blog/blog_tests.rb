@@ -32,4 +32,13 @@ module Blog
     assert_equal blog.posts[1], second_post
     assert_equal blog.posts[2], third_post
   end
+
+  test '#published_posts returns the posts that are published' do
+    published      = a_post_with_publication_time(DateTime.parse('2011-01-01 09:00:00'))
+    not_published  = a_post_with_publication_time(DateTime.parse('9999-01-01 09:00:01'))
+
+    blog = Blog.new('name', 'desc', [published, not_published])
+
+    assert_equal blog.published_posts, [published]
+  end
 end
