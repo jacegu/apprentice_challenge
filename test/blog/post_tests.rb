@@ -49,4 +49,9 @@ module Blog
     post = a_post_entitled('title with several words')
     assert_equal post.uri, 'title-with-several-words'
   end
+
+  test 'non alphanumeric characters are removed from the url' do
+    post = a_post_entitled('t1?t)l%3 w1#t@h s0ºm3 [s+ym=b0ls]')
+    assert_equal post.uri, 't1tl3-w1th-s0m3-symb0ls'
+  end
 end

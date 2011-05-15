@@ -14,7 +14,9 @@ module Blog
     end
 
     def uri
-      @title.gsub(/\s/, '-')
+      chunks = @title.split
+      chunks.each{ |c| c.gsub!(/\W/, '') }
+      chunks.join('-')
     end
 
     def published?
