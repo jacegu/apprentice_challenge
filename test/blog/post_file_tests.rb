@@ -5,22 +5,22 @@ require 'file_double'
 
 def sample_post_file_content
   """
-                  
+  
   2011-05-08 20:00
-                  
+  
   This is the post title
-                  
+  
   This should be the post description
-                  
+  
   <h2>The content</h2>
-                  
+  
   <p>This is part of the content</p>
-                  
+  
   """
 end
 
 module Blog
-  file = FileDouble.new(sample_post_file_content, false)
+  file = FileDouble.new(sample_post_file_content)
   @post_file = PostFile.new(file)
 
   test 'a post file reads the full content of the File its created from' do
@@ -50,5 +50,12 @@ module Blog
 
   test '#content - takes from 4th line to the end of the file as the content' do
     assert_equal @post_file.content, "<h2>The content</h2>\n<p>This is part of the content</p>"
+  end
+
+  test 'is equal to a post with the same title, description, content and publication time' do
+    a_post = Post.new('t', 'd', 'c', DateTime.parse('2010-01-01 10:00'))
+    file = FileDouble.new("2010-01-01 10:00\nt\nd\nc\n")
+    a_post_file = PostFile.new(file)
+    assert_equal a_post_file, a_post
   end
 end

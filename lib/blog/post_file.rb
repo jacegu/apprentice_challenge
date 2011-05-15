@@ -31,6 +31,7 @@ module Blog
       lines = @full_content.split("\n")
       lines.each{ |l| l.lstrip! }
       lines.reject!{ |l| l.length == 0 }
+      lines
     end
   end
 end
