@@ -1,5 +1,6 @@
 GREEN    = "\e[0;32m"
 RED      = "\e[0;31m"
+YELLOW   = "\e[0;33m"
 NO_COLOR = "\e[0m"
 
 def assert_equal(a, b)
@@ -23,6 +24,10 @@ def test(message, &code_under_test)
   end
 end
 
+def xtest(message, &code_under_test)
+  print_in_color YELLOW, "P pending: #{message}"
+end
+
 if ARGV[0] == "testit"
   test 'assert equal works with equal elements' do
     assert_equal 'string', 'string'
@@ -42,5 +47,9 @@ if ARGV[0] == "testit"
 
   test 'test works when there are errors in the code under test' do
     infinite = 1 / 0
+  end
+
+  xtest 'this is pending' do
+    "nothing"
   end
 end
