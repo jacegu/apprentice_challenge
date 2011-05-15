@@ -37,7 +37,7 @@ module Blog
     assert_equal @post_file.full_content, sample_post_file_content
   end
 
-  test '#lines - returns the lines wiht text of the file content' do
+  test '#lines - returns the lines with text of the file content' do
     assert_equal @post_file.lines, ['2011-05-08 20:00',
                                     'This is the post title',
                                     'This should be the post description',
