@@ -20,4 +20,16 @@ module Blog
     blog = Blog.new('name', 'desc', the_posts)
     assert_equal blog.posts, the_posts
   end
+
+  test 'the blog posts are ordered by publication time' do
+    first_post  = a_post_with_publication_time(DateTime.parse('2011-01-01 09:00:00'))
+    second_post = a_post_with_publication_time(DateTime.parse('2011-01-01 09:00:01'))
+    third_post  = a_post_with_publication_time(DateTime.parse('2011-01-01 09:00:02'))
+
+    blog = Blog.new('name', 'desc', [third_post, first_post, second_post])
+
+    assert_equal blog.posts[0], first_post
+    assert_equal blog.posts[1], second_post
+    assert_equal blog.posts[2], third_post
+  end
 end

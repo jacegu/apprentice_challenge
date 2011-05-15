@@ -5,7 +5,7 @@ module Blog
     def initialize(name, description, posts)
       @name = name
       @description = description
-      @posts = posts
+      @posts = posts.sort
     end
   end
 end
