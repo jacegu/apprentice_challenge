@@ -3,15 +3,19 @@ RED      = "\e[0;31m"
 NO_COLOR = "\e[0m"
 
 def assert_equal(a, b)
-  raise "[#{a} != #{b}]" if a != b
+  raise "[#{a}] should be equal to [#{b}]" if a != b
+end
+
+def print_in_color(color, message)
+  STDERR.puts "#{color}#{message}#{NO_COLOR}"
 end
 
 def test(message, &code_under_test)
   begin
     code_under_test.call
-    puts "#{GREEN}. #{message}#{NO_COLOR}"
-  rescue Exception => error_message
-    puts "#{RED}F #{message}: #{error_message}#{NO_COLOR}"
+    print_in_color GREEN, ". #{message}"
+  rescue Exception => error
+    print_in_color RED, "F #{message}:\n    #{error}"
   end
 end
 
