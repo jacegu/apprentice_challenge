@@ -38,4 +38,10 @@ module Blog
     published_post = a_post_with_publication_time(DateTime.parse('2011-01-01 00:00:00'))
     assert_true published_post.published?
   end
+
+  test 'a post has an uri which is generated from the title' do
+    post_title = 'title'
+    post = a_post_entitled(post_title)
+    assert_equal post.uri, post_title
+  end
 end

@@ -13,6 +13,10 @@ module Blog
       @publication_time = publication_time
     end
 
+    def uri
+      @title
+    end
+
     def published?
       DateTime.now >= @publication_time
     end
