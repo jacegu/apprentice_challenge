@@ -13,6 +13,10 @@ module Blog
       @content = content
     end
 
+    def published?
+      DateTime.now >= @publication_time
+    end
+
     def <=>(other)
       @publication_time <=> other.publication_time
     end

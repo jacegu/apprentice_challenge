@@ -33,4 +33,9 @@ module Blog
     assert_true a_post < other_post
     assert_true other_post > a_post
   end
+
+  test 'a post is published if its publication time is present or past' do
+    published_post = a_post_with_publication_time(DateTime.parse('2011-01-01 00:00:00'))
+    assert_true published_post.published?
+  end
 end
