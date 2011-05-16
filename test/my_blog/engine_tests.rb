@@ -99,7 +99,10 @@ module MyBlog
     assert_equal response.code, '404'
   end
 
-  xtest 'if the requested post is not published returns a 404'
+  test 'if the requested post is not published returns a 404' do
+    response = get '/blog/not-published'
+    assert_equal response.code, '404'
+  end
 
   stop_engine
 end
