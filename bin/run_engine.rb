@@ -6,7 +6,7 @@ require 'my_blog'
 
 default_port     = 8583
 blog_name        = '@ecomba apprentice challenge blog'
-blog_description = 'This blog engine uses only The Ruby Language core and has been created as an anwser to the challenge that Enrique Comba threw to anyone who wanted to be his apprentice.'
+blog_description = 'This blog engine uses only The Ruby Language core and has been created as an answer to the challenge that Enrique Comba threw to anyone who wanted to be his apprentice.'
 
 dir = MyBlog::PostDir.new(Dir.open(MyBlog::POSTS_DIR))
 blog = MyBlog::Blog.new(blog_name, blog_description, dir)
