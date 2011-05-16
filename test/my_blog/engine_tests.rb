@@ -10,7 +10,7 @@ PORT = 8583
 def create_temporal_posts
   @post_dir_path = Dir.tmpdir
   post1 = "2011-05-08 10:00\nThe 1st post\nThe 1st post desc\n1st post content"
-  post2 = "2022-05-02 09:00\nThe 2st post\nThe 2st post desc\n2st post content"
+  post2 = "2011-05-02 09:00\nThe 2nd post\nThe 2nd post desc\n2nd post content"
   post3 = "9999-12-31 23:59\nNot published\nNot published\nNot published"
   i = 1
   [post1, post2, post3].each do |post_content|
@@ -34,7 +34,7 @@ end
 
 
 def get(resource)
-  url = URI.parse("http://localhost:#{PORT}/#{resource}")
+  url = URI.parse("http://localhost:#{PORT}#{resource}")
   request = Net::HTTP::Get.new(url.path)
   content = Net::HTTP.start(url.host, url.port) do |http|
     http.request(request)
@@ -77,7 +77,13 @@ module MyBlog
   create_temporal_posts
   run_engine
 
-  xtest 'main page displays all the published posts'
+  test 'main page displays all the published posts' do
+    response = get '/blog'
+    assert_contains response.body, 'The 1st post'
+    assert_contains response.body, 'The 2nd post'
+  end
+
+  xtest 'main page does not display the posts that have not been published yet'
 
   xtest 'post page displays only the requested post'
 
