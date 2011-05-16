@@ -25,6 +25,12 @@ def assert_contains(actual_content, expected_content)
   end
 end
 
+def assert_does_not_contain(actual_content, rejected_content)
+  if actual_content.include?(rejected_content)
+    raise ">#{actual_content}< should not contain >#{rejected_content}<"
+  end
+end
+
 def print_in_color(color, message)
   STDERR.puts "#{color}#{message}#{NO_COLOR}"
 end
@@ -78,6 +84,14 @@ if ARGV[0] == "testit"
 
   test 'assert contains works with not contained text' do
     assert_contains 'abcd', 'e'
+  end
+
+  test 'assert does not contain works with rejected text' do
+    assert_does_not_contain 'abcd', 'e'
+  end
+
+  test 'assert does not contains works with contained text' do
+    assert_does_not_contain 'abcd', 'a'
   end
 
   test 'test works when there are errors in the code under test' do
