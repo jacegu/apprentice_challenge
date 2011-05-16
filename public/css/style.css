@@ -57,6 +57,13 @@ p {
   margin-bottom: 1.2em;
 }
 
+blockquote {
+  margin: 2em 1.5em 2em 0;
+  padding: 10px 0 0 68px;
+  font-style: italic;
+  background: transparent url('/img/quote.png') 5px top no-repeat;
+}
+
 em { font-style: italic; }
 strong { font-weight: bold; }
 
