@@ -2,9 +2,11 @@ $: << File.join(File.expand_path(File.dirname(__FILE__)), "..", "..", "lib")
 
 require 'my_blog'
 require 'webrick'
+require 'erb'
 
 module MyBlog
   POSTS_DIR = 'posts'
+  VIEWS_DIR = 'views'
 
   class Engine
     include WEBrick
@@ -24,7 +26,17 @@ module MyBlog
       @server.stop
     end
 
+    module Renderer
+      def render(view)
+        html = ""
+        File.open("#{VIEWS_DIR}/#{view}.html.erb", 'r'){ |f| html = f.read }
+        ERB.new(html).result(binding)
+      end
+    end
+
     class BlogServlet < HTTPServlet::AbstractServlet
+      include Renderer
+
       def do_GET(request, response)
         @blog = @options[0]
         blog_request = Request.new(request.path)
@@ -35,16 +47,7 @@ module MyBlog
       def render_main_page(response)
         response['status'] = 200
         response['Content-Type'] = 'text/html'
-        published_posts = ""
-        @blog.published_posts.each do |post|
-          published_posts << "<h1>#{post.title}</h1>\n"
-        end
-        response.body = %{
-           <html>
-           <head><title>#{@blog.name}</title></head>
-           <body>#{published_posts}</body>
-           </html>
-        }
+        response.body = render :blog
       end
 
       def render_post_page(post_uri, response)
