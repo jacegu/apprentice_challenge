@@ -19,6 +19,12 @@ def assert_false(expression)
   raise "it should be false" if expression
 end
 
+def assert_contains(actual_content, expected_content)
+  unless actual_content.include?(expected_content)
+    raise ">#{actual_content}< should contain >#{expected_content}<"
+  end
+end
+
 def print_in_color(color, message)
   STDERR.puts "#{color}#{message}#{NO_COLOR}"
 end
@@ -64,6 +70,14 @@ if ARGV[0] == "testit"
 
   test 'assert false works with expressions that evaluate to false' do
     assert_false true
+  end
+
+  test 'assert contains works with contained text' do
+    assert_contains 'abcd', 'a'
+  end
+
+  test 'assert contains works with not contained text' do
+    assert_contains 'abcd', 'e'
   end
 
   test 'test works when there are errors in the code under test' do
