@@ -65,7 +65,7 @@ module MyBlog
       end
 
       def not_found
-        raise HTTPStatus::NotFound
+        raise WEBrick::HTTPStatus::NotFound
       end
     end
 
