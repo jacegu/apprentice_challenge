@@ -28,9 +28,9 @@ module MyBlog
 
     blog = Blog.new('name', 'desc', [third_post, first_post, second_post])
 
-    assert_equal blog.posts[0], first_post
+    assert_equal blog.posts[2], first_post
     assert_equal blog.posts[1], second_post
-    assert_equal blog.posts[2], third_post
+    assert_equal blog.posts[0], third_post
   end
 
   test '#published_posts - returns the posts that are published' do

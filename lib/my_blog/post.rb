@@ -35,7 +35,7 @@ module MyBlog
     end
 
     def <=>(other)
-      publication_time <=> other.publication_time
+      other.publication_time <=> publication_time
     end
   end
 

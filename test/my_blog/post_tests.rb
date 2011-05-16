@@ -64,8 +64,8 @@ module MyBlog
   test 'posts are compared based in their publication time' do
     a_post     = a_post_with_publication_time(DateTime.parse('2011-01-01 00:00:00'))
     other_post = a_post_with_publication_time(DateTime.parse('2011-02-01 00:00:00'))
-    assert_true a_post < other_post
-    assert_true other_post > a_post
+    assert_true a_post > other_post
+    assert_true other_post < a_post
   end
 
   test 'post is published if its publication time is present or past' do
