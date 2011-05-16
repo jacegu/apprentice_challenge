@@ -1,0 +1,72 @@
+
+#title:
+Inception at Wiseri: day 2
+
+#description:
+Finishing the round up to the inception at Wiseri with the activities of the second day and the final conclusions about the results.
+
+#date:
+2011-05-11 19:00
+
+#body:
+
+%p
+  Last week I started talking about the inception at
+  %a{href: 'http://www.wiseri.com'} Wiseri.
+  In
+  %a{href: 'http://javieracero.com/blog/inception-at-wiseri-day-1'} that post
+  I told you what an inception is and how the first day went. It is time to finish what I started and review the rest of the practices we went through.
+%p
+  You have to keep in mind that, since this wasn't an inception done with a customer, there were certain things that we skipped. For example, we didn't talk about money. Despite that you can get an overall idea of how inceptions work and what benefits you can expect from one.<!--more-->
+
+%h2 The second day
+
+%p The second day started with more coffee and more rolls. That lead to the next thing we did which was bitterer.
+
+%h3 What keeps you up at night?
+%p This practice is all about <strong>stating your fears and concerns</strong>. Everyone in the team had to express what she was afraid of. <i>What keeps her up at night</i>. To make things easier we did it in a brainstorming way: you pick up a postit, write there whatever you are afraid of, read it at loud and stick it on the whiteboard.
+
+%p Once we were done we had filled the whiteboard entirely. There was a lot of fear in that room!
+
+%p Our facilitator, Enrique, asked us to <strong>put our fears into groups</strong>. We had to classify them into categories and stick them together in different areas of the whiteboard. But... we had to do that in silence. Not a single word could come out of our mouths! It was kind of curious to realize how we all agreed without even talking.
+
+%p After all this effort it was time to <strong>do something about our concerns</strong>. What could we do to avoid those fears? What could we do to mitigate them?
+
+%p We discussed every single fear, group by group, brainstorming solutions or ways to make them less scary. Enrique put on his advisor hat and helped us.
+
+%p It took us the whole morning but it was worth it. <strong>This exercise was the one that helped the most to put everyone on the same page</strong>.
+
+
+%h3 Design the solution
+
+%p It was time to put more thought on the product.
+
+%p We started by <strong>sketching the application workflows</strong>. We had to put ourselves in the users' shoes and start designing the actions everyone, from the system to administrators, should do to make things work. It was really helpful to see <em>the big picture</em>.
+
+%p There were a few constraints though: we should <em>not</em> focus on the technology and we should <em>not</em> go into much detail.
+
+
+%p Now that we had an overall idea of what was needed we moved to the next exercise. We were going to <strong>sketch forms and pages of the system</strong>. But we had to make <em>six</em> variants of the same form or page. We didn't have to put much detail. Just an overall idea of how things should be.
+
+%p I was surprised what an awesome way it was to gather ideas and brainstorm different ways of doing the same thing. It was amazing and very, very creative!
+
+
+%h3 Minimum Viable Product
+%p The day was coming to an end and we still had to design our <strong><u>M</u>inimum <u>V</u>iable <u>P</u>roduct</strong> or MVP: the minimum set of functionality to launch Wiseri.
+
+%p Once again, Enrique put his advisor hat on, and helped us with this overwhelming task. It's <em>really hard</em> to drop functionality. He told us a few anecdotes about different companies and the products they put to the market to help us understand what we had to do.
+
+%p To visualize the results Enrique developed a what I have called (I don't know the actual name) a <strong>Functionality Map</strong>. We wrote the user stories we could think of based on our sketches and Enrique put them on the map. He helped us deciding whether they make it to the MVP or not. If a story made it through it was displayed in way you could tell which workflow it belonged to. It was awesome. I had never seen a map like this and I found it to be <strong>extremely helpful</strong>.
+
+
+%h2 Conclusions and consequences
+
+%p I found the inception to be <strong>a great way to start a software project or a company</strong>: it helps putting everything on the table, ideas, fears, etc. in a creative way. I also found it to be a great way to make teams <em>jell</em>.
+
+%p
+  The other thing I enjoyed the most was seeing Enrique work. I had attended a TDD course he gave but had never see him work with clients. He is <em>special</em>. You just have to check out
+  %a{href:'http://twitter.com/#!/semurat/status/65369996951437314'}this tweet
+  from the CTO of Wiseri to figure it out.
+
+%p It was really great to be a part of it.
+
