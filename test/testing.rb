@@ -8,11 +8,15 @@ def assert_equal(a, b)
 end
 
 def assert_not_equal(a, b)
-  raise ">#{a}< should not be equal >#{b}<" if a == b
+  raise ">#{a}< should not be equal to >#{b}<" if a == b
 end
 
 def assert_true(expression)
   raise "it should be true" unless expression
+end
+
+def assert_false(expression)
+  raise "it should be false" if expression
 end
 
 def print_in_color(color, message)
@@ -31,6 +35,7 @@ end
 def xtest(message, &code_under_test)
   print_in_color YELLOW, "P pending: #{message}"
 end
+
 
 if ARGV[0] == "testit"
   test 'assert equal works with equal elements' do
@@ -53,8 +58,12 @@ if ARGV[0] == "testit"
     assert_true 'a' == 'a'
   end
 
-  test 'assert true works with expressions that evaluate to false' do
-    assert_true false
+  test 'assert false works with expressions that evaluate to false' do
+    assert_false false
+  end
+
+  test 'assert false works with expressions that evaluate to false' do
+    assert_false true
   end
 
   test 'test works when there are errors in the code under test' do
