@@ -14,6 +14,10 @@ module MyBlog
       def main_page?
         @uri == '/blog' or @uri == '/blog/'
       end
+
+      def post_page?
+        @uri =~ /\/blog\/[\w|-]+$/
+      end
     end
   end
 end
