@@ -1,0 +1,67 @@
+== @ecomba apprentice challenge blog
+This blog engine uses only The Ruby Language core and has been created as an answer to the challenge that Enrique Comba threw to anyone who wanted to be his apprentice.
+
+You can check out his proposal at: http://ecomba.org/blog/2011/05/15/the-apprentice/
+
+All the code here has been developed using TDD. All the stuff that I have needed to make it so has also been developed by me and can be found under the <tt>test</tt> directory.
+
+== About the blog
+This is just the code to provide the <b>minimum ammount of functionality</b> to make the blog engine <b>useful</b>. Which means that <b>you can post</b> and that's it.
+
+== Posting
+I have reused the idea of posting from the filesystem. You can put your posts under the <tt>posts</tt> directory and they will be published.
+
+The post's file name <b>must</b> end in <tt>.post.html</tt> to be processed by the engine.
+
+Each post contains just plain old text. To make things work you have to follow just this rules:
+- The <b>first line</b> with non blank text in the file will be the <b>publication time</b> of the post. It has to be defined in a format that <tt>DateTime.parse</tt> can handle. Check out http://www.ruby-doc.org/stdlib/libdoc/date/rdoc/classes/DateTime.html#M000485 for more info about formats. (Be aware that timezones aren't supported).
+
+- The <b>second line</b> with non blank text will be taken as the post <b>title</b>.
+
+- The <b>third line</b> with non blank text will be taken as the post <b>description</b>. This description is used to generate the corresponding meta tag in each posts page.
+
+- The <b>rest of the file</b> will be taken as the post <b>content</b>. You can and should use HTML in the post content to be sure that it looks the way you want it to.
+
+Let's see an example. This is one of the posts I have included with the engine.
+
+
+ 2011-05-12 21:00
+
+ Pedigree vs Awesomeness
+
+ Tom Preston-Werner gave the best definiton of what University is to professionals in the programming field during his interview on the Teach me to code podcast.
+
+
+ <p>I hear a few podcasts. I like listening people talk about programming while I'm having a walk or heading somewhere.</p>
+
+ <p>One of those podcasts is <a href="http://teachmetocode.com/podcast"><em>teach me to code</em></a> by <a href="http://twitter.com/#!/cmaxw">Charles Max Wood</a>. It's an awesome podcast about almost any topic that could be related to programming: from testing to hiring developers.</p>
+
+ <p>What's even more awesome is that Charles usually interviews <strong>really interesting</strong> people like Corey Haines, Dave Hoover, Andy Hunt, Dave Thomas, Chad Fowler... You can get an idea of the kind of people involved.</p>
+
+ <p>On the last issue of the podcast the interviewee was <a href="http://twitter.com/#!/mojombo">Tom Preston-Werner</a>, one of the <a href="http://github.com">Github</a> founders.</a>.
+
+ <p>One of the questions Charles made was related to how Github hires developers. How they find talented professionals. Tom knocked my mind with <em>the best</em> reflection related to college degrees I have ever heard:</a>
+
+ <blockquote>I find résumés to be almost entirely useless. You send me a résumé and I'll be like... <strong>&laquo;congratulations&raquo;</strong>. You send me code... and now I'm interested.</blockquote>
+
+ <blockquote>Honestly, I don't care where you went to school. I don't care where you worked before. I don't care about anything except, <strong>&laquo;are you awesome at what you do?&raquo;</strong>.</blockquote>
+
+ <blockquote>And a lot of that comes from... probably half of us, and possibly more of us, don't have college degrees. I don't have one, Chris doesn't have one...</blockquote>
+
+ <blockquote>To us is more like... <strong>&laquo;What can you accomplish? What are you capable of? Opposite to what is your <u>pedigree</u>&raquo;</strong></blockquote>
+
+ <p>You can hear it from 01:04:00 answering Charles' question about recognizing talented developers. The exact moment Tom says what I'm quoting here is 01:06:40.</p>
+
+ <p> I'm going to get that quote tattooed on my butt. <em>Seriously</em>...
+
+I think it is pretty simple and works great.
+
+== Runing the engine
+To run the engine you just have to do:
+ rake run
+
+You can also use the script under the <tt>bin</tt> directory:
+ chmod u+x bin/run_engine.rb
+ ./bin/run_engine.rb
+
+The posts you can see there have been taken from my personal blog http://javieracero.com/blog. I just had to modify the file format a little bit to make them work since the idea is pretty much the same.
