@@ -23,7 +23,7 @@ end
 
 def run_engine
   dir = MyBlog::PostDir.new(Dir.open(@post_dir_path))
-  blog = MyBlog::Blog.new('testing engine', 'testing engine', dir.posts)
+  blog = MyBlog::Blog.new('testing engine', 'testing engine', dir)
   @engine = MyBlog::Engine.new(PORT, blog)
   Thread.new{ @engine.start }
 end

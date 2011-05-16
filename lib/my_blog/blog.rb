@@ -1,11 +1,15 @@
 module MyBlog
   class Blog
-    attr_reader :name, :description, :posts
+    attr_reader :name, :description
 
-    def initialize(name, description, posts)
+    def initialize(name, description, dir)
       @name = name
       @description = description
-      @posts = posts.sort
+      @dir = dir
+    end
+
+    def posts
+      @dir.posts.sort
     end
 
     def post_with_uri(uri)
@@ -15,7 +19,7 @@ module MyBlog
     end
 
     def published_posts
-      @posts.select{ |p| p.published? }
+      posts.select{ |p| p.published? }
     end
   end
 end
