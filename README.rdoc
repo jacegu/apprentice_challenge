@@ -64,4 +64,6 @@ You can also use the script under the <tt>bin</tt> directory:
  chmod u+x bin/run_engine.rb
  ./bin/run_engine.rb
 
+It runs on the <tt>8583</tt> port so you should be able to see the posts on http://localhost:8583/blog .
+
 The posts you can see there have been taken from my personal blog http://javieracero.com/blog. I just had to modify the file format a little bit to make them work since the idea is pretty much the same.
