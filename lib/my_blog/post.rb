@@ -36,16 +36,12 @@ module MyBlog
   end
 
   class NullPost
-    def title
-      ''
-    end
-
-    def description
-      ''
-    end
-
-    def content
-      ''
+    attr_reader :title, :description, :content, :uri
+    def initialize
+      @title = ''
+      @description = ''
+      @content = ''
+      @uri = ''
     end
   end
 end

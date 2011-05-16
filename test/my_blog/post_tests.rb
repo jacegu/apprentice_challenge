@@ -100,4 +100,8 @@ module MyBlog
   test 'NullPost - has empty content' do
     assert_equal NullPost.new.content, ''
   end
+
+  test 'NullPost - has empty uri' do
+    assert_equal NullPost.new.uri, ''
+  end
 end
