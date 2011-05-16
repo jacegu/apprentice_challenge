@@ -36,9 +36,8 @@ module MyBlog
     expected_post = Post.new('title', 'desc', 'content', publication_time)
 
     file = FileDouble.new("2011-01-01 10:00\ntitle\ndesc\ncontent")
-    #File.yield_file_when_opening(file, '/post-file.post.html')
+    File.yield_file_when_opening(file, '/post-file.post.html')
 
-    assert_equal PostFile.new(file), expected_post
-    #assert_true @dir.posts.include?(expected_post)
+    assert_true @dir.posts.include?(expected_post)
   end
 end
