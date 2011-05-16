@@ -83,7 +83,10 @@ module MyBlog
     assert_contains response.body, 'The 2nd post'
   end
 
-  xtest 'main page does not display the posts that have not been published yet'
+  test 'main page does not display the posts that have not been published yet' do
+    response = get '/blog'
+    assert_does_not_contain response.body, 'Not published'
+  end
 
   xtest 'post page displays only the requested post'
 
