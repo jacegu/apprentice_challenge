@@ -22,4 +22,10 @@ module MyBlog
     assert_true   Engine::Request.new('/blog/something').post_page?
     assert_true   Engine::Request.new('/blog/the-requested-post').post_page?
   end
+
+  test 'Engine::Request extracts the post uri from the request uri' do
+    the_post_uri = 'a-post-uri-example'
+    request = Engine::Request.new("/blog/#{the_post_uri}")
+    assert_equal request.post_uri, the_post_uri
+  end
 end

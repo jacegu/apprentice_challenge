@@ -11,6 +11,10 @@ module MyBlog
         @uri = uri
       end
 
+      def post_uri
+        @uri.sub(/^\/blog\//, '')
+      end
+
       def main_page?
         @uri == '/blog' or @uri == '/blog/'
       end
