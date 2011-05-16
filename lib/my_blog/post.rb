@@ -36,11 +36,12 @@ module MyBlog
   end
 
   class NullPost
-    attr_reader :title, :description, :content, :uri
+    attr_reader :title, :description, :content, :publication_time, :uri
     def initialize
       @title = ''
       @description = ''
       @content = ''
+      @publication_time = DateTime.parse('1900-01-01 00:00:00+00:00')
       @uri = ''
     end
   end
