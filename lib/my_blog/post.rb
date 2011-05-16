@@ -34,4 +34,10 @@ module MyBlog
       publication_time <=> other.publication_time
     end
   end
+
+  class NullPost
+    def title
+      ''
+    end
+  end
 end
