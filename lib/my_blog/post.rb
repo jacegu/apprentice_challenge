@@ -48,5 +48,9 @@ module MyBlog
     def published?
       false
     end
+
+    def found?
+      false
+    end
   end
 end

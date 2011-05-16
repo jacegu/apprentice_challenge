@@ -113,4 +113,8 @@ module MyBlog
   test 'NullPost - is never published' do
     assert_false NullPost.new.published?
   end
+
+  test 'NullPost - is never found' do
+    assert_false NullPost.new.found?
+  end
 end
