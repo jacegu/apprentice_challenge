@@ -27,21 +27,7 @@ module MyBlog
         @blog = @options[0]
         blog_request = Request.new(request.path)
         render_main_page(response) if blog_request.main_page?
-
-        if blog_request.post_page?
-          post = @blog.post_with_uri(blog_request.post_uri)
-          response['status'] = 200
-          response['Content-Type'] = 'text/html'
-          response.body = %{
-             <html>
-             <head><title>#{post.title} | #{@blog.name}</title></head>
-             <body>
-               <h1>#{post.title}</h1>
-               #{post.content}
-             </body>
-             </html>
-          }
-        end
+        render_post_page(blog_request.post_uri, response) if blog_request.post_page?
       end
 
       def render_main_page(response)
@@ -57,6 +43,29 @@ module MyBlog
            <body>#{published_posts}</body>
            </html>
         }
+      end
+
+      def render_post_page(post_uri, response)
+        post = @blog.post_with_uri(post_uri)
+        if post.found?
+          response['status'] = 200
+          response['Content-Type'] = 'text/html'
+          response.body = %{
+             <html>
+             <head><title>#{post.title} | #{@blog.name}</title></head>
+             <body>
+               <h1>#{post.title}</h1>
+               #{post.content}
+             </body>
+             </html>
+          }
+        else
+          not_found
+        end
+      end
+
+      def not_found
+        raise HTTPStatus::NotFound
       end
     end
 
