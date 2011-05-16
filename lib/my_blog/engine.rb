@@ -12,7 +12,8 @@ module MyBlog
       end
 
       def post_uri
-        @uri.sub(/^\/blog\//, '')
+        return @uri.sub(/^\/blog\//, '') if post_page?
+        ''
       end
 
       def main_page?

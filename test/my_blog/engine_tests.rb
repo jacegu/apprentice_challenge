@@ -28,4 +28,9 @@ module MyBlog
     request = Engine::Request.new("/blog/#{the_post_uri}")
     assert_equal request.post_uri, the_post_uri
   end
+
+  test 'Engine::Request returns empty string as post uri on main page request' do
+    request = Engine::Request.new("/blog")
+    assert_equal request.post_uri, ''
+  end
 end
