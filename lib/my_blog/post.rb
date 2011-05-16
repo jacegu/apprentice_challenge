@@ -41,6 +41,7 @@ module MyBlog
 
   class NullPost < Post
     attr_reader :title, :description, :content, :publication_time, :uri
+
     def initialize
       @title = ''
       @description = ''
