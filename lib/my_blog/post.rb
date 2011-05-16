@@ -43,5 +43,9 @@ module MyBlog
     def description
       ''
     end
+
+    def content
+      ''
+    end
   end
 end

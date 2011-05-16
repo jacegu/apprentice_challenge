@@ -93,7 +93,11 @@ module MyBlog
     assert_equal NullPost.new.title, ''
   end
 
-  test 'NullPost - has description title' do
+  test 'NullPost - has empty description' do
     assert_equal NullPost.new.description, ''
+  end
+
+  test 'NullPost - has empty content' do
+    assert_equal NullPost.new.content, ''
   end
 end
