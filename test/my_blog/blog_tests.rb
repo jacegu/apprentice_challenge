@@ -41,4 +41,12 @@ module MyBlog
 
     assert_equal blog.published_posts, [published]
   end
+
+  test '#post_with_uri - finds a post with given uri among published posts' do
+    searched       = Post.new('post title', 'd', 'c', DateTime.parse('2011-01-01 09:00:00'))
+    not_published  = a_post_with_publication_time(DateTime.parse('9999-01-01 09:00:01'))
+
+    blog = Blog.new('name', 'desc', [searched, not_published])
+    assert_equal blog.post_with_uri('post-title'), searched
+  end
 end

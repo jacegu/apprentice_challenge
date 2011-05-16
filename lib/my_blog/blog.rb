@@ -8,6 +8,10 @@ module MyBlog
       @posts = posts.sort
     end
 
+    def post_with_uri(uri)
+      published_posts.select{ |p| p.uri == uri }[0]
+    end
+
     def published_posts
       @posts.select{ |p| p.published? }
     end
