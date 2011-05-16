@@ -25,6 +25,26 @@ module MyBlog
     class BlogServlet < HTTPServlet::AbstractServlet
       def do_GET(request, response)
         @blog = @options[0]
+        blog_request = Request.new(request.path)
+        render_main_page(response) if blog_request.main_page?
+
+        if blog_request.post_page?
+          post = @blog.post_with_uri(blog_request.post_uri)
+          response['status'] = 200
+          response['Content-Type'] = 'text/html'
+          response.body = %{
+             <html>
+             <head><title>#{post.title} | #{@blog.name}</title></head>
+             <body>
+               <h1>#{post.title}</h1>
+               #{post.content}
+             </body>
+             </html>
+          }
+        end
+      end
+
+      def render_main_page(response)
         response['status'] = 200
         response['Content-Type'] = 'text/html'
         published_posts = ""
@@ -32,10 +52,10 @@ module MyBlog
           published_posts << "<h1>#{post.title}</h1>\n"
         end
         response.body = %{
-         <html>
-         <head><title>#{@blog.name}</title></head>
-         <body>#{published_posts}</body>
-         </html>
+           <html>
+           <head><title>#{@blog.name}</title></head>
+           <body>#{published_posts}</body>
+           </html>
         }
       end
     end
