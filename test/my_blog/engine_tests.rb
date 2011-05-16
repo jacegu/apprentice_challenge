@@ -2,6 +2,10 @@ $: << File.join(File.expand_path(File.dirname(__FILE__)), '..')
 
 require 'test_helper'
 require 'tmpdir'
+require 'uri'
+require 'net/http'
+
+PORT = 8583
 
 module MyBlog
   test 'Engine::Request is created from a request path uri' do
@@ -56,5 +60,13 @@ def create_temporal_posts
     post_file_path = File.join(post_dir_path, "post-#{i}.post.html")
     File.open(post_file_path, 'w+'){ |f| f.puts post_content}
     i += 1
+  end
+end
+
+def get(resource)
+  url = URI.parse("http://localhost:#{PORT}/#{resource}")
+  request = Net::HTTP::Get.new(url.path)
+  content = Net::HTTP.start(url.host, url.port) do |http|
+    http.request(request)
   end
 end
