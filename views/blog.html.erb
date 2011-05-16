@@ -3,11 +3,12 @@
   <head>
     <title><%= @blog.name %></title>
     <meta name="description" content="<%= @blog.description %>" />
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
   </head>
   <body>
     <div id="wrapper">
       <div id="header">
-        <h1><%= @blog.name %></h1>
+        <h1><a href="/blog"><%= @blog.name %></a></h1>
         <p class="description"><%= @blog.description %></p>
       </div>
       <div id="content">
@@ -19,17 +20,17 @@
                 <%= post.publication_time.day %>,
                 <%= post.publication_time.year %>
               </span>
-              <h1><%= post.title %></h1>
+              <h1><a href="/blog/<%= post.uri %>"><%= post.title %></a></h1>
               <div class="post-content">
                 <%= post.content.split('</p>')[0] %></p>
                 <%= post.content.split('</p>')[1] %></p>
               </div>
+              <span class="read-it">
+                <a href="/blog/<%= post.uri %>">Read it &raquo;</a>
+              </span>
             </li>
         <% end %>
         </ul>
-      </div>
-      <div id="footer">
-
       </div>
     </div>
   </body>

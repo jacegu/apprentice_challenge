@@ -5,15 +5,16 @@ require 'webrick'
 require 'erb'
 
 module MyBlog
-  POSTS_DIR = 'posts'
-  VIEWS_DIR = 'views'
+  POSTS_DIR  = 'posts'
+  VIEWS_DIR  = 'views'
+  PUBLIC_DIR = 'public'
 
   class Engine
     include WEBrick
 
     def initialize(port, blog)
       @blog = blog
-      @server = WEBrick::HTTPServer.new(:Port => port)
+      @server = WEBrick::HTTPServer.new(:Port => port, :DocumentRoot => PUBLIC_DIR)
       @server.mount('/blog', BlogServlet, @blog)
       trap("INT"){ @server.shutdown }
     end

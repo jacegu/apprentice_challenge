@@ -1,0 +1,149 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  color: #666666;
+  background: #f3f3f3;
+  font-family: "Georgia", "Lucida Grande",Helvetica,Arial,sans-serif;
+  font-size: 1.1em;
+  line-height: 150%;
+}
+
+h1 {
+  margin: 1.5em 0 .4em;
+  color: #343434;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+h2 {
+  margin: 1.5em 0 .4em;
+  color: #343434;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+h3 {
+  margin: 1.5em 0 .4em;
+  color: #343434;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+h4 {
+  margin: 1.5em 0 .4em;
+  color: #343434;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 1.2em;
+}
+
+em { font-style: italic; }
+strong { font-weight: bold; }
+
+#wrapper {
+  width: 700px;
+  margin: 0 auto;
+}
+
+#header {
+  padding-left: 10px;
+}
+
+#header h1 {
+  font-size: 2.1em;
+}
+
+#header h1 a,
+#header h1 a:visited,
+#header h1 a:active {
+  color: #343434;
+  text-decoration: none;
+}
+
+#header p.description {
+  margin: 30px 20px 0 20px;
+  font-style: italic;
+}
+
+ul.posts {
+  margin: 0;
+  list-style: none;
+}
+
+ul.posts li {
+  margin: 4.2em 0;
+  padding: 2.7em;
+  background: white;
+  border: 1px solid #dddddd;
+}
+
+span.date {
+  float: right;
+  position: relative;
+  top: -15px;
+  color: #aaaaaa;
+  font-size: 12px;
+}
+
+ul.posts li h1 {
+  color: #343434;
+  font-size: 1.6em;
+  margin: .5em 0 1.2em;
+  text-decoration: none;
+}
+
+ul.posts li h1 a,
+ul.posts li h1 a:active,
+ul.posts li h1 a:visited {
+  color: #343434;
+  text-decoration: none;
+}
+
+ul.posts li span.read-it {
+  position: relative;
+  top: 10px;
+  display: block;
+  font-style: italic;
+  text-align: right;
+}
+
+ul.posts li span.read-it a,
+ul.posts li span.read-it a:visited,
+ul.posts li span.read-it a:active {
+  color: #343434;
+  text-decoration: none;
+}
+
+div.post {
+  margin: 4.2em 0;
+  padding: 2.7em;
+  background: white;
+  border: 1px solid #dddddd;
+}
+
+div.post h1 {
+  color: #343434;
+  font-size: 1.6em;
+  margin: .5em 0 1.2em;
+  text-decoration: none;
+}
