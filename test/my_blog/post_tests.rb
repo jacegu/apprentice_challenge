@@ -104,7 +104,7 @@ module MyBlog
     assert_equal NullPost.new.content, ''
   end
 
-  test 'NullPost - has a publication date 1900-01-01 00:00:00+00:00' do
+  test 'NullPost - has 1900-01-01 00:00:00+00:00 as publication date' do
     expected_publication_date = DateTime.parse('1900-01-01 00:00:00+00:00')
     assert_equal NullPost.new.publication_time, expected_publication_date
   end
