@@ -38,27 +38,32 @@ module MyBlog
       include Renderer
 
       def do_GET(request, response)
+        @request, @response = request, response
         @blog = @options[0]
-        blog_request = Request.new(request.path)
-        render_main_page(response) if blog_request.main_page?
-        render_post_page(blog_request.post_uri, response) if blog_request.post_page?
+        render_response
       end
 
-      def render_main_page(response)
-        response['status'] = 200
-        response['Content-Type'] = 'text/html'
-        response.body = render :blog
+      def render_response
+        blog_request = Request.new(@request.path)
+        render_main_page if blog_request.main_page?
+        render_post_page(blog_request.post_uri) if blog_request.post_page?
       end
 
-      def render_post_page(post_uri, response)
+      def render_main_page
+        render_page(:blog)
+      end
+
+      def render_post_page(post_uri)
         @post = @blog.post_with_uri(post_uri)
         if @post.found?
-          response['status'] = 200
-          response['Content-Type'] = 'text/html'
-          response.body = render :post
+          render_page(:post)
         else
           not_found
         end
+      end
+
+      def render_page(page)
+        @response.body = render page
       end
 
       def not_found
