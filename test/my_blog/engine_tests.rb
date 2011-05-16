@@ -94,7 +94,7 @@ module MyBlog
     assert_does_not_contain response.body, 'The 2nd post'
   end
 
-  test 'if the requested post doesnt exists returns a 404' do
+  test 'if the requested post doesnt exist returns a 404' do
     response = get '/blog/some-post-that-does-not-exist'
     assert_equal response.code, '404'
   end
