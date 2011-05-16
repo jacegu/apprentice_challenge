@@ -89,6 +89,10 @@ module MyBlog
     assert_equal post.uri, 't1tl3-w1th-s0m3-symb0ls'
   end
 
+  test 'posts are always found' do
+    assert_true a_post_entitled('title').found?
+  end
+
   test 'NullPost - has empty title' do
     assert_equal NullPost.new.title, ''
   end

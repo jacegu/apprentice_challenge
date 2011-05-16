@@ -23,6 +23,10 @@ module MyBlog
       DateTime.now >= publication_time
     end
 
+    def found?
+      true
+    end
+
     def ==(other)
       title == other.title and
         description == other.description and
@@ -35,7 +39,7 @@ module MyBlog
     end
   end
 
-  class NullPost
+  class NullPost < Post
     attr_reader :title, :description, :content, :publication_time, :uri
     def initialize
       @title = ''
