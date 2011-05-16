@@ -51,19 +51,11 @@ module MyBlog
       end
 
       def render_post_page(post_uri, response)
-        post = @blog.post_with_uri(post_uri)
-        if post.found?
+        @post = @blog.post_with_uri(post_uri)
+        if @post.found?
           response['status'] = 200
           response['Content-Type'] = 'text/html'
-          response.body = %{
-             <html>
-             <head><title>#{post.title} | #{@blog.name}</title></head>
-             <body>
-               <h1>#{post.title}</h1>
-               #{post.content}
-             </body>
-             </html>
-          }
+          response.body = render :post
         else
           not_found
         end

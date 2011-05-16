@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title><%= @post.title %> | <%= @blog.name %></title>
+    <meta name="description" content="<%= @post.description %>" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <h1><%= @blog.name %></h1>
+        <p class="description"><%= @blog.description %></p>
+      </div>
+      <div id="content">
+        <div class="post">
+          <span class="date">
+            <%= Date:: MONTHNAMES[@post.publication_time.mon] %>
+            <%= @post.publication_time.day %>,
+            <%= @post.publication_time.year %>
+          </span>
+          <h1><%= @post.title %></h1>
+          <div class="post-content">
+            <%= @post.content %></p>
+          </div>
+        </ul>
+      </div>
+      <div id="footer">
+
+      </div>
+    </div>
+  </body>
+</html>
