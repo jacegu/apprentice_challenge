@@ -1,9 +1,24 @@
 $: << File.join(File.expand_path(File.dirname(__FILE__)), "..", "..", "lib")
 
 require 'my_blog'
+require 'webrick'
 
 module MyBlog
   class Engine
+    def initialize(port, blog)
+      @blog = blog
+      @server = WEBrick::HTTPServer.new(:Port => port)
+      trap("INT"){ @server.shutdown }
+    end
+
+    def start
+      @server.start
+    end
+
+    def stop
+      @server.stop
+    end
+
     class Request
       attr_reader :uri
 

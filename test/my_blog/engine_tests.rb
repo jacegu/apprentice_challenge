@@ -7,6 +7,41 @@ require 'net/http'
 
 PORT = 8583
 
+def create_temporal_posts
+  @post_dir_path = Dir.tmpdir
+  post1 = "2011-05-08 10:00\nThe 1st post\nThe 1st post desc\n1st post content"
+  post2 = "2022-05-02 09:00\nThe 2st post\nThe 2st post desc\n2st post content"
+  post3 = "9999-12-31 23:59\nNot published\nNot published\nNot published"
+  i = 1
+  [post1, post2, post3].each do |post_content|
+    post_file_path = File.join(@post_dir_path, "post-#{i}.post.html")
+    File.open(post_file_path, 'w+'){ |f| f.puts post_content}
+    i += 1
+  end
+end
+
+
+def run_engine
+  dir = MyBlog::PostDir.new(Dir.open(@post_dir_path))
+  blog = MyBlog::Blog.new('testing engine', 'testing engine', dir.posts)
+  @engine = MyBlog::Engine.new(PORT, blog)
+  Thread.new{ @engine.start }
+end
+
+def stop_engine
+  @engine.stop
+end
+
+
+def get(resource)
+  url = URI.parse("http://localhost:#{PORT}/#{resource}")
+  request = Net::HTTP::Get.new(url.path)
+  content = Net::HTTP.start(url.host, url.port) do |http|
+    http.request(request)
+  end
+end
+
+
 module MyBlog
   test 'Engine::Request is created from a request path uri' do
     the_uri = '/blog/a-requested-post'
@@ -40,6 +75,7 @@ module MyBlog
   end
 
   create_temporal_posts
+  run_engine
 
   xtest 'main page displays all the published posts'
 
@@ -48,25 +84,6 @@ module MyBlog
   xtest 'if the requested post doesnt exists returns a 404'
 
   xtest 'if the requested post is not published returns a 404'
-end
 
-def create_temporal_posts
-  post_dir_path = Dir.tmpdir
-  post1 = "2011-05-08 10:00\nThe 1st post\nThe 1st post desc\n1st post content"
-  post2 = "2022-05-02 09:00\nThe 2st post\nThe 2st post desc\n2st post content"
-  post3 = "9999-12-31 23:59\nNot published\nNot published\nNot published"
-  i = 1
-  [post1, post2, post3].each do |post_content|
-    post_file_path = File.join(post_dir_path, "post-#{i}.post.html")
-    File.open(post_file_path, 'w+'){ |f| f.puts post_content}
-    i += 1
-  end
-end
-
-def get(resource)
-  url = URI.parse("http://localhost:#{PORT}/#{resource}")
-  request = Net::HTTP::Get.new(url.path)
-  content = Net::HTTP.start(url.host, url.port) do |http|
-    http.request(request)
-  end
+  stop_engine
 end
