@@ -14,7 +14,7 @@ module MyBlog
     end
 
     def uri
-      chunks = title.split
+      chunks = title.downcase.split
       chunks.each{ |c| c.gsub!(/\W/, '') }
       chunks.join('-')
     end

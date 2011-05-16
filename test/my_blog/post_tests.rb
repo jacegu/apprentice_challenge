@@ -73,10 +73,9 @@ module MyBlog
     assert_true published_post.published?
   end
 
-  test '#uri - a post has its title as uri' do
-    post_title = 'title'
-    post = a_post_entitled(post_title)
-    assert_equal post.uri, post_title
+  test '#uri - a post has its title on lowercase as uri' do
+    post = a_post_entitled('TiTlE')
+    assert_equal post.uri, 'title'
   end
 
   test '#uri - spaces are replaced with scripts ("-") in the uri' do
