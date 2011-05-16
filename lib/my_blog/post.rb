@@ -39,5 +39,9 @@ module MyBlog
     def title
       ''
     end
+
+    def description
+      ''
+    end
   end
 end
