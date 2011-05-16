@@ -4,6 +4,8 @@ require 'my_blog'
 require 'webrick'
 
 module MyBlog
+  POSTS_DIR = 'posts'
+
   class Engine
     include WEBrick
 

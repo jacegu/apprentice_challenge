@@ -16,4 +16,9 @@ task :test do
   run_tests_in('test')
 end
 
+desc 'run the engine'
+task :run do
+  load 'bin/run_engine.rb'
+end
+
 task :default => [:test]
