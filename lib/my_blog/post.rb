@@ -44,5 +44,9 @@ module MyBlog
       @publication_time = DateTime.parse('1900-01-01 00:00:00+00:00')
       @uri = ''
     end
+
+    def published?
+      false
+    end
   end
 end

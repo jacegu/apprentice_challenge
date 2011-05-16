@@ -106,8 +106,11 @@ module MyBlog
     assert_equal NullPost.new.publication_time, expected_publication_date
   end
 
-
   test 'NullPost - has empty uri' do
     assert_equal NullPost.new.uri, ''
+  end
+
+  test 'NullPost - is never published' do
+    assert_false NullPost.new.published?
   end
 end
