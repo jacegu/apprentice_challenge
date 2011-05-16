@@ -49,4 +49,10 @@ module MyBlog
     blog = Blog.new('name', 'desc', [searched, not_published])
     assert_equal blog.post_with_uri('post-title'), searched
   end
+
+  test '#post_with_uri - returns null post if no post with given uri exists' do
+    null_post = NullPost.new
+    blog = Blog.new('name', 'desc', [])
+    assert_equal blog.post_with_uri('any-uri'), null_post
+  end
 end

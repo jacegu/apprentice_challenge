@@ -9,7 +9,9 @@ module MyBlog
     end
 
     def post_with_uri(uri)
-      published_posts.select{ |p| p.uri == uri }[0]
+      post = published_posts.select{ |p| p.uri == uri }[0]
+      return post if post
+      NullPost.new
     end
 
     def published_posts
