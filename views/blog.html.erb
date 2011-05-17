@@ -17,7 +17,7 @@
         <% @blog.published_posts.each do |post| %>
             <li>
               <span class="date">
-                <%= Date:: MONTHNAMES[post.publication_time.mon] %>
+                <%= Date::MONTHNAMES[post.publication_time.mon] %>
                 <%= post.publication_time.day %>,
                 <%= post.publication_time.year %>
               </span>
