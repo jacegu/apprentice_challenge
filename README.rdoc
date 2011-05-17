@@ -14,7 +14,7 @@ I have reused the idea of posting from the filesystem. You can put your posts un
 The post's file name <b>must</b> end in <tt>.post.html</tt> to be processed by the engine.
 
 Each post contains just plain old text. To make things work you have to follow just this rules:
-- The <b>first line</b> with non blank text in the file will be the <b>publication time</b> of the post. It has to be defined in a format that <tt>DateTime.parse</tt> can handle. Check out http://www.ruby-doc.org/stdlib/libdoc/date/rdoc/classes/DateTime.html#M000485 for more info about formats. (Be aware that timezones aren't supported).
+- The <b>first line</b> with non blank text in the file will be the <b>publication time</b> of the post. It has to be defined in a format that <tt>DateTime.parse</tt> can handle. Check out http://www.ruby-doc.org/stdlib/libdoc/date/rdoc/classes/DateTime.html#M000485 for more info about formats. (<em>If you are not in GMT+0 specify the timezone to make sure that the publication time is in the same timezone the engine is in</em>).
 
 - The <b>second line</b> with non blank text will be taken as the post <b>title</b>.
 
