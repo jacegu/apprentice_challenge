@@ -80,8 +80,11 @@ module MyBlog
       end
 
       def post_uri
-        return @uri.sub(/^\/blog\//, '') if post_page?
-        ''
+        if post_page?
+          return @uri.sub(/^\/blog\//, '')
+        else
+          return ''
+        end
       end
 
       def main_page?
