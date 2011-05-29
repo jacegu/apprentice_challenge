@@ -43,7 +43,7 @@ end
 
 def run_engine
   feed = FeedDouble.new
-  rss = MyBlog::PostRss.new(feed)
+  rss = MyBlog::PostFeed.new(feed)
   blog = MyBlog::Blog.new('testing engine', 'testing engine', rss)
   @engine = MyBlog::Engine.new(PORT, blog)
   Thread.new{ @engine.start }

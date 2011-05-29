@@ -1,4 +1,4 @@
 module MyBlog
-  class PostRss
+  class PostFeed
   end
 end
