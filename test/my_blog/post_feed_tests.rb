@@ -5,8 +5,9 @@ require 'feed_double'
 
 module MyBlog
   test 'post feed takes its content from a readable uri' do
-    opened_uri = FeedDouble.new
-    feed = PostFeed.new(opened_uri)
-    assert_equal feed.content, opened_uri.read
+    the_feed_content = 'content'
+    uri = FeedDouble.new(the_feed_content)
+    feed = PostFeed.new(uri)
+    assert_equal feed.content, the_feed_content
   end
 end
