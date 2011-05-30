@@ -11,7 +11,11 @@ This is just the code to provide the <b>minimum ammount of functionality</b> to 
 == Posting
 Posts are published from an RSS Feed. The feed should be a valid feed (check it at http://validator.w3.org/feed/).
 
-The engine also takes a few things for granted that every feed item has a *title*, a *description*, an <b>encoded content</b> (based on the RSS extension http://purl.org/rss/1.0/modules/content) and a *pubDate*.
+The engine also takes a few things for granted:
+* That every feed item has a *title*
+* That every feed item has a *description*
+* That every feed item has an <b>encoded content</b> (based on the RSS extension http://purl.org/rss/1.0/modules/content)
+* That every feed item has a *pubDate*
 
 If this is not the case the engine might not work.
 
