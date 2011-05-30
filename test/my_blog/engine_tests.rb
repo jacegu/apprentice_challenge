@@ -2,6 +2,8 @@ $: << File.join(File.expand_path(File.dirname(__FILE__)), '..')
 
 require 'test_helper'
 require 'feed_double'
+require 'uri'
+require 'net/http'
 
 PORT = 8583
 
@@ -21,10 +23,10 @@ SAMPLE_FEED_CONTENT = %{
       <content:encoded>1st post content</content:encoded>
     </item>
     <item>
-      <title>The 2st post</title>
-      <description>The 2st post desc</description>
+      <title>The 2nd post</title>
+      <description>The 2nd post desc</description>
       <pubDate>Tue, 02 May 2011 09:00:00 +0000</pubDate>
-      <content:encoded>2st post content</content:encoded>
+      <content:encoded>2nd post content</content:encoded>
     </item>
     <item>
       <title>Not published</title>
@@ -92,7 +94,7 @@ module MyBlog
 
   run_engine
 
-  xtest 'main page displays all the published posts' do
+  test 'main page displays all the published posts' do
     response = get '/blog'
     assert_contains response.body, 'The 1st post'
     assert_contains response.body, 'The 2nd post'
