@@ -7,6 +7,7 @@ module MyBlog
     end
 
     def content
+      @uri.rewind
       @uri.read
     end
 

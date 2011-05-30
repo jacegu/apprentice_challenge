@@ -4,11 +4,18 @@ require 'test_helper'
 require 'feed_double'
 
 module MyBlog
-  test 'post feed takes its content from a readable uri' do
+  test '#content - returns the endpoint uri content' do
     the_feed_content = 'content'
     uri = FeedDouble.new(the_feed_content)
     feed = PostFeed.new(uri)
     assert_equal feed.content, the_feed_content
+  end
+
+  test '#content - can read endpoint any number of times' do
+    uri = FeedDouble.new('anything')
+    feed = PostFeed.new(uri)
+    feed.content
+    assert_true uri.rewinded?
   end
 
   test '#posts - returns a post for each item in the feed pointed by the uri' do

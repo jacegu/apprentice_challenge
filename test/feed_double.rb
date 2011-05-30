@@ -6,4 +6,12 @@ class FeedDouble
   def read
     @content
   end
+
+  def rewind
+    @rewinded = true
+  end
+
+  def rewinded?
+    @rewinded || false
+  end
 end
