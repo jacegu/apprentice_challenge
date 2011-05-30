@@ -9,7 +9,11 @@ All the code here has been developed using TDD. All the stuff that I have needed
 This is just the code to provide the <b>minimum ammount of functionality</b> to make the blog engine <b>useful</b>. Which means that <b>you can post</b> and that's it.
 
 == Posting
-Posts are published from an RSS Feed.
+Posts are published from an RSS Feed. The feed should be a valid feed (check it at http://validator.w3.org/feed/).
+
+The engine also takes a few things for granted that every feed item has a *title*, a *description*, an <b>encoded content</b> (based on the RSS extension http://purl.org/rss/1.0/modules/content) and a *pubDate*.
+
+If this is not the case the engine might not work.
 
 == Runing the engine
 To run the engine you just have to do:
