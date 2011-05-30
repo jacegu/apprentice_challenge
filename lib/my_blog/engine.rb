@@ -5,7 +5,6 @@ require 'webrick'
 require 'erb'
 
 module MyBlog
-  POSTS_DIR  = 'posts'
   VIEWS_DIR  = 'views'
   PUBLIC_DIR = 'public'
 
