@@ -56,4 +56,13 @@ module MyBlog
     assert_true post_feed_item.publication_time > current_time
     assert_true post_feed_item.publication_time < DateTime.now
   end
+
+  test 'the publication time is expressed as a DateTime' do
+    the_date = Time.now
+    the_date_as_datetime = the_date.to_datetime
+    ItemDoubleWithPubDate = Struct.new(:title, :description, :pubDate)
+    item = ItemDoubleWithPubDate.new('title', 'description', the_date)
+    post_feed_item = PostFeedItem.new(item)
+    assert_equal post_feed_item.publication_time, the_date_as_datetime
+  end
 end

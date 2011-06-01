@@ -1,5 +1,5 @@
 module MyBlog
-  class PostFeedItem
+  class PostFeedItem < Post
 
     DESCRIPTION_FOR_ITEM_WITHOUT_CONTENT = ''
 
@@ -9,7 +9,7 @@ module MyBlog
       @title = item.title
       @description = item.description
       @content = item.content_encoded if item.respond_to?(:content_encoded)
-      @publication_time = item.pubDate if item.respond_to?(:pubDate)
+      @publication_time = item.pubDate.to_datetime if item.respond_to?(:pubDate)
     end
 
     def description
