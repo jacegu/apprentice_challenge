@@ -13,14 +13,14 @@ module MyBlog
       assert_equal post_feed_item.title, the_title
   end
 
-   test 'if the item its created from has enconded content takes the description from it' do
+   test 'if the item its created from has encoded content takes the description from it' do
     the_description = 'description'
     item = ItemDoubleWithContent.new('title', the_description, 'content')
     post_feed_item = PostFeedItem.new(item)
     assert_equal post_feed_item.description, the_description
   end
 
-  test 'if the item its created from has enconded content takes the content from it' do
+  test 'if the item its created from has encoded content takes the content from it' do
     the_content = 'content'
     item = ItemDoubleWithContent.new('title', 'description', the_content)
     post_feed_item = PostFeedItem.new(item)
