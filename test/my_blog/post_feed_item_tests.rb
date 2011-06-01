@@ -41,4 +41,19 @@ module MyBlog
     assert_equal post_feed_item.content, the_description
   end
 
+  test 'if the item its created from has a pubDate takes the publication time from it' do
+    the_date = DateTime.now
+    ItemDoubleWithPubDate = Struct.new(:title, :description, :pubDate)
+    item = ItemDoubleWithPubDate.new('title', 'description', the_date)
+    post_feed_item = PostFeedItem.new(item)
+    assert_equal post_feed_item.publication_time, the_date
+  end
+
+  test 'if the item its created does not have a pubDate takes the current time as publication time' do
+    current_time = DateTime.now
+    item = ItemDouble.new('title', 'description')
+    post_feed_item = PostFeedItem.new(item)
+    assert_true post_feed_item.publication_time > current_time
+    assert_true post_feed_item.publication_time < DateTime.now
+  end
 end
