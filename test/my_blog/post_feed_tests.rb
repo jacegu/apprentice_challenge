@@ -18,7 +18,7 @@ module MyBlog
     assert_true uri.rewinded?
   end
 
-  test '#posts - returns a post for each item in the feed pointed by the uri' do
+  xtest '#posts - returns a post for each item in the feed pointed by the uri' do
     publication_time = DateTime.parse('2011-01-01T11:00:00+01:00')
     expected_post = Post.new('title', 'desc', 'content', publication_time)
 

@@ -94,7 +94,7 @@ module MyBlog
 
   run_engine
 
-  test 'main page displays all the published posts' do
+  xtest 'main page displays all the published posts' do
     response = get '/blog'
     assert_contains response.body, 'The 1st post'
     assert_contains response.body, 'The 2nd post'
@@ -105,18 +105,18 @@ module MyBlog
     assert_does_not_contain response.body, 'Not published'
   end
 
-  test 'post page displays only the requested post' do
+  xtest 'post page displays only the requested post' do
     response = get '/blog/the-1st-post'
     assert_contains response.body, 'The 1st post'
     assert_does_not_contain response.body, 'The 2nd post'
   end
 
-  test 'if the requested post doesnt exist returns a 404' do
+  xtest 'if the requested post doesnt exist returns a 404' do
     response = get '/blog/some-post-that-does-not-exist'
     assert_equal response.code, '404'
   end
 
-  test 'if the requested post is not published returns a 404' do
+  xtest 'if the requested post is not published returns a 404' do
     response = get '/blog/not-published'
     assert_equal response.code, '404'
   end
