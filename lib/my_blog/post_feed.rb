@@ -12,12 +12,12 @@ module MyBlog
     end
 
     def posts
-      return feed.items.map{ |i| PostFeedItem.new(i) } if rss?
-      [] if atom?
+      return feed.items.map{ |i| PostFeedItem.new(i)  } if rss?
+      return feed.items.map{ |i| PostFeedEntry.new(i) } if atom?
     end
 
     def feed
-      RSS::Parser.parse(content, false)
+      RSS::Parser.parse(content)
     end
 
     def rss?
