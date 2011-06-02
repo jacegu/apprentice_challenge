@@ -1,5 +1,5 @@
 module MyBlog
-  class PostFeedEntry
+  class PostFeedEntry < Post
     SUMMARY_FOR_ENTRIES_WITHOUT_IT = ''
     CONTENT_FOR_ENTRIES_WITHOUT_IT = ''
 

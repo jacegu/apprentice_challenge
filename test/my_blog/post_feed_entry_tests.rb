@@ -57,4 +57,16 @@ module MyBlog
     post_feed_entry = PostFeedEntry.new(entry)
     assert_equal post_feed_entry.publication_time, update_time
   end
+
+  test 'is equal to a post with the same title, description, content and publication time' do
+    title = 'title'
+    description = 'summary'
+    content = 'content'
+    time = DateTime.now
+
+    post_feed_entry = PostFeedEntry.new(entry_double(title, description, content, time))
+    post = Post.new(title, description, content, time)
+
+    assert_equal post_feed_entry, post
+  end
 end
