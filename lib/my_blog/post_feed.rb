@@ -12,9 +12,20 @@ module MyBlog
     end
 
     def posts
-      feed_items = RSS::Parser.parse(content).items
-      feed_items.map{ |i| PostFeedItem.new(i) }
+      return feed.items.map{ |i| PostFeedItem.new(i) } if rss?
+      [] if atom?
     end
 
+    def feed
+      RSS::Parser.parse(content, false)
+    end
+
+    def rss?
+      feed.feed_type == 'rss'
+    end
+
+    def atom?
+      feed.feed_type == 'atom'
+    end
   end
 end
