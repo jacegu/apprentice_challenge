@@ -58,6 +58,14 @@ module MyBlog
     assert_equal post_feed_entry.publication_time, update_time
   end
 
+  test 'the publication time should be comparable to a DateTime' do
+    update_time_as_time = Time.now
+    update_time_as_datetime = update_time_as_time.to_datetime
+    entry = entry_double('title', 'summary', 'content', update_time_as_time)
+    post_feed_entry = PostFeedEntry.new(entry)
+    assert_equal post_feed_entry.publication_time, update_time_as_datetime
+  end
+
   test 'is equal to a post with the same title, description, content and publication time' do
     title = 'title'
     description = 'summary'

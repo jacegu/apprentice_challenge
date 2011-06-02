@@ -8,8 +8,8 @@ module MyBlog
     def initialize(entry)
       @title = entry.title.content
       @summary = entry.summary.content if entry.respond_to?(:summary)
-      @updated_on = entry.updated.content
       @content = entry.content.content if entry.respond_to?(:content)
+      @updated_on = entry.updated.content
     end
 
     def description
@@ -21,7 +21,7 @@ module MyBlog
     end
 
     def publication_time
-      @updated_on
+      @updated_on.to_datetime
     end
   end
 end
