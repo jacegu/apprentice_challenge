@@ -18,4 +18,11 @@ module MyBlog
     post_feed_entry = PostFeedEntry.new(entry)
     assert_equal post_feed_entry.description, the_summary
   end
+
+  test 'if the entry does not have a summary the description will be empty' do
+    EntryDoubleWithoutSummary = Struct.new(:title)
+    entry = EntryDoubleWithoutSummary.new('title')
+    post_feed_entry = PostFeedEntry.new(entry)
+    assert_equal post_feed_entry.description, ''
+  end
 end

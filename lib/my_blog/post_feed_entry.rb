@@ -1,10 +1,16 @@
 module MyBlog
   class PostFeedEntry
-    attr_reader :title, :description
+    SUMMARY_FOR_ENTRIES_WITHOUT_IT = ''
+
+    attr_reader :title
 
     def initialize(entry)
       @title = entry.title
-      @description = entry.summary
+      @summary = entry.summary if entry.respond_to?(:summary)
+    end
+
+    def description
+      @summary || SUMMARY_FOR_ENTRIES_WITHOUT_IT
     end
   end
 end
