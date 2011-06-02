@@ -35,6 +35,13 @@ module MyBlog
     assert_equal post_feed_entry.description, ''
   end
 
+  test 'if the entry summary is nil the description will be empty' do
+    entry = entry_double('title', nil, 'content', DateTime.now)
+    entry.summary = nil
+    post_feed_entry = PostFeedEntry.new(entry)
+    assert_equal post_feed_entry.description, ''
+  end
+
   test 'if the entry has a content takes its content from it' do
     the_content = 'content'
     entry = entry_double('title', 'summary', the_content, DateTime.now)
