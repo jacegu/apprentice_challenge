@@ -6,10 +6,10 @@ module MyBlog
     attr_reader :title
 
     def initialize(entry)
-      @title = entry.title
-      @summary = entry.summary if entry.respond_to?(:summary)
-      @updated_on = entry.updated
-      @content = entry.content if entry.respond_to?(:content)
+      @title = entry.title.content
+      @summary = entry.summary.content if entry.respond_to?(:summary)
+      @updated_on = entry.updated.content
+      @content = entry.content.content if entry.respond_to?(:content)
     end
 
     def description
