@@ -5,8 +5,8 @@ module MyBlog
     OPEN_ESCAPE  = '<![CDATA['
     CLOSE_ESCAPE = ']]>'
 
-    def initialize(feed)
-      @escaped = feed.read
+    def initialize(content)
+      @escaped = content
       escape('description')
       escape('content:encoded')
     end
