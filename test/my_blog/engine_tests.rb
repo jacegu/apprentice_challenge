@@ -7,7 +7,7 @@ require 'net/http'
 
 PORT = 8583
 
-SAMPLE_FEED_CONTENT = %{
+SAMPLE_FEED_CONTENT = FeedDouble.new(%{
 <?xml version='1.0' encoding='utf-8' ?>
 <rss version='2.0'
      xmlns:atom='http://www.w3.org/2005/Atom'
@@ -36,12 +36,12 @@ SAMPLE_FEED_CONTENT = %{
     </item>
   </channel>
 </rss>
-}
+})
 
 def run_engine
-  feed = FeedDouble.new(SAMPLE_FEED_CONTENT)
-  rss = MyBlog::Feed.new(feed)
-  blog = MyBlog::Blog.new('testing engine', 'testing engine', rss)
+  Object.yield_when_something_is_opened(SAMPLE_FEED_CONTENT)
+  feed = MyBlog::Feed.new('http://url/to/sample/rss')
+  blog = MyBlog::Blog.new('testing engine', 'testing engine', feed.make_post_feed)
   @engine = MyBlog::Engine.new(PORT, blog)
   Thread.new{ @engine.start }
 end

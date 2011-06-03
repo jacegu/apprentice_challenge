@@ -2,14 +2,14 @@ module MyBlog
   class Blog
     attr_reader :name, :description
 
-    def initialize(name, description, dir)
+    def initialize(name, description, post_feed)
       @name = name
       @description = description
-      @dir = dir
+      @post_feed = post_feed
     end
 
     def posts
-      @dir.posts.sort
+      @post_feed.posts.sort
     end
 
     def post_with_uri(uri)

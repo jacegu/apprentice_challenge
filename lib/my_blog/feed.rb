@@ -6,17 +6,18 @@ module MyBlog
       @uri = uri
     end
 
+    def make_post_feed
+      return PostFeed::Rss.new(@uri)  if rss?
+      return PostFeed::Atom.new(@uri) if atom?
+    end
+
     def content
-      @uri.rewind
-      @uri.read
+      feed_content = ''
+      open(@uri){ |uri| feed_content = uri.read }
+      feed_content
     end
 
-    def posts
-      return feed.items.map{ |i| PostFeed::Item.new(i)  } if rss?
-      return feed.items.map{ |i| PostFeed::Entry.new(i) } if atom?
-    end
-
-    def feed
+    def parse
       begin
         RSS::Parser.parse(content)
       rescue
@@ -25,17 +26,16 @@ module MyBlog
       end
     end
 
+    def type
+      parse.feed_type.to_sym
+    end
+
     def rss?
-      feed.feed_type == 'rss'
+      type == :rss
     end
 
     def atom?
-      feed.feed_type == 'atom'
-    end
-
-    def remote_uri
-      return feed.channel.link if rss?
-      return feed.link.href if atom?
+      type == :atom
     end
   end
 end

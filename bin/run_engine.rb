@@ -16,8 +16,8 @@ blog_description = 'This blog engine uses only The Ruby Language core and has be
 #feed_uri = 'http://blog.rubybestpractices.com/feed/gregory.xml'
 #feed_uri = 'http://sermoa.wordpress.com/feed'
 #feed_uri = 'http://feeds.feedburner.com/obtiva'
-#feed_uri = 'http://www.tuaw.com/rss.xml'
-feed_uri = 'http://ecomba.org/blog/rss'
+feed_uri = 'http://www.tuaw.com/rss.xml'
+#feed_uri = 'http://ecomba.org/blog/rss'
 
 # Atom
 #feed_uri = 'http://feeds.feedburner.com/YoYElSoftware?format=xml'
@@ -28,6 +28,6 @@ feed_uri = 'http://ecomba.org/blog/rss'
 #feed_uri = 'http://blog.8thlight.com/feed/atom.xml'
 #feed_uri = 'http://chadfowler.com/posts.atom'
 
-feed = MyBlog::Feed.new(open(feed_uri))
-blog = MyBlog::Blog.new(blog_name, blog_description, feed)
+feed = MyBlog::Feed.new(feed_uri)
+blog = MyBlog::Blog.new(blog_name, blog_description, feed.make_post_feed)
 MyBlog::Engine.new(default_port, blog).start
