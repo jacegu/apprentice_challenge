@@ -46,24 +46,24 @@ module MyBlog
   test '#content - returns the endpoint uri content' do
     the_feed_content = 'content'
     uri = FeedDouble.new(the_feed_content)
-    feed = PostFeed.new(uri)
+    feed = Feed.new(uri)
     assert_equal feed.content, the_feed_content
   end
 
   test '#content - can read endpoint any number of times' do
     uri = FeedDouble.new('anything')
-    feed = PostFeed.new(uri)
+    feed = Feed.new(uri)
     feed.content
     assert_true uri.rewinded?
   end
 
   test '#rss? - returns true if the feed is an RSS feed' do
-    post_feed = PostFeed.new(RSS_FEED_DOUBLE)
+    post_feed = Feed.new(RSS_FEED_DOUBLE)
     assert_true post_feed.rss?
   end
 
   test '#atom? - returns true if the feed is an Atom feed' do
-    post_feed = PostFeed.new(ATOM_FEED_DOUBLE)
+    post_feed = Feed.new(ATOM_FEED_DOUBLE)
     assert_true post_feed.atom?
   end
 
@@ -71,7 +71,7 @@ module MyBlog
     publication_time = DateTime.parse('2011-01-01T11:00:00+01:00')
     expected_post = Post.new('title', 'desc', 'content', publication_time)
 
-    post_feed = PostFeed.new(RSS_FEED_DOUBLE)
+    post_feed = Feed.new(RSS_FEED_DOUBLE)
 
     assert_true post_feed.posts.include?(expected_post)
   end
@@ -80,7 +80,7 @@ module MyBlog
     publication_time = DateTime.parse('2011-01-01T11:00:00+01:00')
     expected_post = Post.new('title', 'desc', 'content', publication_time)
 
-    post_feed = PostFeed.new(ATOM_FEED_DOUBLE)
+    post_feed = Feed.new(ATOM_FEED_DOUBLE)
 
     assert_true post_feed.posts.include?(expected_post)
   end
@@ -107,18 +107,18 @@ module MyBlog
         </channel>
       </rss>})
 
-    post_feed = PostFeed.new(bad_formatted_feed)
+    post_feed = Feed.new(bad_formatted_feed)
 
     assert_true post_feed.posts.include?(expected_post)
   end
 
   test '#remote_uri - returns the remote uri of the feed resource (link element if it is an RSS feed)' do
-    post_feed = PostFeed.new(RSS_FEED_DOUBLE)
+    post_feed = Feed.new(RSS_FEED_DOUBLE)
     assert_equal post_feed.remote_uri, 'http:/localhost:8583/blog/rss'
   end
 
   test '#remote_uri - returns the remote uri of the feed resource (link element if it is an RSS feed)' do
-    post_feed = PostFeed.new(ATOM_FEED_DOUBLE)
+    post_feed = Feed.new(ATOM_FEED_DOUBLE)
     assert_equal post_feed.remote_uri, 'http:/localhost:8583/blog/rss'
   end
 end

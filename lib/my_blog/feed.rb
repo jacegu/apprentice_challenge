@@ -1,7 +1,7 @@
 require 'rss'
 
 module MyBlog
-  class PostFeed
+  class Feed
     def initialize(uri)
       @uri = uri
     end
@@ -12,15 +12,15 @@ module MyBlog
     end
 
     def posts
-      return feed.items.map{ |i| PostFeedItem.new(i)  } if rss?
-      return feed.items.map{ |i| PostFeedEntry.new(i) } if atom?
+      return feed.items.map{ |i| PostFeed::Item.new(i)  } if rss?
+      return feed.items.map{ |i| PostFeed::Entry.new(i) } if atom?
     end
 
     def feed
       begin
         RSS::Parser.parse(content)
       rescue
-        escaped_content = PostFeedContent.new(content).escaped
+        escaped_content = PostFeed::Content.new(content).escaped
         RSS::Parser.parse(escaped_content)
       end
     end

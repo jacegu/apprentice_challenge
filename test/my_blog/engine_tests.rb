@@ -40,7 +40,7 @@ SAMPLE_FEED_CONTENT = %{
 
 def run_engine
   feed = FeedDouble.new(SAMPLE_FEED_CONTENT)
-  rss = MyBlog::PostFeed.new(feed)
+  rss = MyBlog::Feed.new(feed)
   blog = MyBlog::Blog.new('testing engine', 'testing engine', rss)
   @engine = MyBlog::Engine.new(PORT, blog)
   Thread.new{ @engine.start }
