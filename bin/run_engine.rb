@@ -17,6 +17,7 @@ blog_description = 'This blog engine uses only The Ruby Language core and has be
 #feed_uri = 'http://sermoa.wordpress.com/feed'
 #feed_uri = 'http://feeds.feedburner.com/obtiva'
 feed_uri = 'http://www.tuaw.com/rss.xml'
+
 #feed_uri = 'http://ecomba.org/blog/rss'
 
 # Atom
