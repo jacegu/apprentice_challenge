@@ -2,7 +2,7 @@ module MyBlog
   module PostFeed
     class Rss < Feed
       def initialize(uri)
-        @uri = uri
+        super(uri)
       end
 
       def posts
