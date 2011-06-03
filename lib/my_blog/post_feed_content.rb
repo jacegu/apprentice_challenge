@@ -1,5 +1,5 @@
 module MyBlog
-  class FeedContent
+  class PostFeedContent
     attr_reader :escaped
 
     OPEN_ESCAPE  = '<![CDATA['

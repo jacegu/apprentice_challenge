@@ -19,7 +19,7 @@ module MyBlog
         </channel>
       </rss>}
 
-    feed_content = FeedContent.new(content)
+    feed_content = PostFeedContent.new(content)
 
     escaped_description = /<description>.*<!\[CDATA\[.+\]\]>.*<\/description>/
     assert_true feed_content.escaped =~ escaped_description
@@ -41,7 +41,7 @@ module MyBlog
         </channel>
       </rss>}
 
-    feed_content = FeedContent.new(content)
+    feed_content = PostFeedContent.new(content)
 
     escaped_content = /<content:encoded>.*<!\[CDATA\[.+\]\]>.*<\/content:encoded>/
     assert_true feed_content.escaped =~ escaped_content
