@@ -34,7 +34,8 @@ module MyBlog
     end
 
     def remote_uri
-      return feed.channel.link
+      return feed.channel.link if rss?
+      return feed.link.href if atom?
     end
   end
 end
