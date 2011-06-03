@@ -32,5 +32,9 @@ module MyBlog
     def atom?
       feed.feed_type == 'atom'
     end
+
+    def remote_uri
+      return feed.channel.link
+    end
   end
 end

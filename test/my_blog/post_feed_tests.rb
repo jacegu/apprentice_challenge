@@ -111,4 +111,9 @@ module MyBlog
 
     assert_true post_feed.posts.include?(expected_post)
   end
+
+  test '#remote_uri - returns the remote uri of the feed resource (link element if it is an RSS feed)' do
+    post_feed = PostFeed.new(RSS_FEED_DOUBLE)
+    assert_equal post_feed.remote_uri, 'http:/localhost:8583/blog/rss'
+  end
 end
