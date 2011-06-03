@@ -17,7 +17,12 @@ module MyBlog
     end
 
     def feed
-      RSS::Parser.parse(content)
+      begin
+        RSS::Parser.parse(content)
+      rescue
+        escaped_content = PostFeedContent.new(content).escaped
+        RSS::Parser.parse(escaped_content)
+      end
     end
 
     def rss?
